@@ -14,7 +14,8 @@ def recommendation():
     titles = request.args.getlist('input')
     ratings = request.args.getlist('rating')
     user_rating = dict(zip(titles,ratings))
-    recs = recommend_random(movies, user_rating,k=3)
+    #recs = recommend_random(movies, user_rating,k=3)
+    recs= recommend_test_nmf(movies, user_rating, model, k=5)
     return render_template('recommendation.html',recs=recs)
 
 if __name__=='__main__': 
