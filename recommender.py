@@ -6,7 +6,7 @@ all algorithms return a list of movieids
 import pandas as pd
 import numpy as np
 from utils import match_movie_title
-
+from sklearn.decomposition import NMF
 
 def recommend_random(movies, user_rating, k=5):
     """
@@ -45,6 +45,8 @@ def recommend_test_nmf(movies, user_rating, model, k=5):
    
     # 3. scoring
     # calculate the score with the NMF model
+    # Non-Negative Matrix Factorization
+    model = NMF(n_components=30, init="random", random_state=10)
     scores = model.inverse_transform(model.transform(user_vec))
     # convert to a pandas series
     scores = pd.Series(scores[0])

@@ -1,4 +1,5 @@
 from recommender import recommend_random
+from recommender import recommend_test_nmf
 from utils import movies
 from flask import Flask,render_template,request
 
